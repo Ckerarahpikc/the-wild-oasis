@@ -126,14 +126,14 @@ function CheckinBooking() {
 
       <ButtonGroup>
         <Button
-          variations="primary"
+          variation="primary"
           size="medium"
           onClick={handleCheckin}
           disabled={!confirmPaid}
         >
           Check in booking #{bookingId}
         </Button>
-        <Button variations="secondary" size="medium" onClick={moveBack}>
+        <Button variation="secondary" size="medium" onClick={moveBack}>
           Back
         </Button>
       </ButtonGroup>

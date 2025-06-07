@@ -7,7 +7,7 @@ function AddCabin() {
   return (
     <Modal>
       <Modal.Open opens="modal-form">
-        <Button size="medium" variations="primary">
+        <Button size="medium" variation="primary">
           Create new cabin
         </Button>
       </Modal.Open>
@@ -16,7 +16,7 @@ function AddCabin() {
       </Modal.Window>
 
       {/* <Modal.Open opens="table">
-        <Button size="medium" variations="primary">
+        <Button size="medium" variation="primary">
           Open Table
         </Button>
       </Modal.Open>
@@ -34,7 +34,7 @@ function AddCabin() {
 //       <Button
 //         onClick={() => setIsOpenModal((state) => !state)}
 //         size="medium"
-//         variations="primary"
+//         variation="primary"
 //       >Create new cabin</Button>
 //       {isOpenModal && (
 //         <Modal onClose={() => setIsOpenModal(false)}>

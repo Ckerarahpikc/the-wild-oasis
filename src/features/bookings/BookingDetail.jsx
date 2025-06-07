@@ -64,7 +64,7 @@ function BookingDetail() {
       <ButtonGroup>
         <Modal>
           <Modal.Open opens="deleteBookingN">
-            <Button variations="danger" size="medium">
+            <Button variation="danger" size="medium">
               Delete booking
             </Button>
           </Modal.Open>
@@ -83,14 +83,14 @@ function BookingDetail() {
 
         {status === "checked-in" && (
           <Button
-            variations="primary"
+            variation="primary"
             size="medium"
             onClick={() => checkout(bookingId)}
           >
             Check out
           </Button>
         )}
-        <Button variations="secondary" size="medium" onClick={moveBack}>
+        <Button variation="secondary" size="medium" onClick={moveBack}>
           Back
         </Button>
       </ButtonGroup>
