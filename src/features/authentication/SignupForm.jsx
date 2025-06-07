@@ -18,19 +18,31 @@ export default function SignupForm() {
   const { signup, isSigningUp } = useSignup();
 
   const onSubmit = ({ fullName, email, password }) => {
-    signup({ fullName, email, password }, { onSettled: reset }); // on all situations then 'reset'
+    signup({ fullName, email, password }, { onSettled: () => reset() }); // on all situations then 'reset'
   };
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <FormRow label="Full name" error={errors?.fullName?.message}>
-        <Input type="text" id="fullName" />
+        <Input
+          type="text"
+          id="fullName"
+          disabled={isSigningUp}
+          {...register("fullName", {
+            required: "This field is required",
+            minLength: {
+              value: 4,
+              message: "Password needs a minimum of 4 characters",
+            },
+          })}
+        />
       </FormRow>
 
       <FormRow label="Email address" error={errors?.email?.message}>
         <Input
           type="email"
           id="email"
+          disabled={isSigningUp}
           {...register("email", {
             required: "This field is required",
             pattern: {
@@ -48,6 +60,7 @@ export default function SignupForm() {
         <Input
           type="password"
           id="password"
+          disabled={isSigningUp}
           {...register("password", {
             required: "This field is required",
             minLength: {
@@ -62,6 +75,7 @@ export default function SignupForm() {
         <Input
           type="password"
           id="passwordConfirm"
+          disabled={isSigningUp}
           {...register("passwordConfirm", {
             required: "This field is required",
             validate: (value) =>

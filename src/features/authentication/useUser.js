@@ -8,5 +8,5 @@ export default function useUser() {
     queryFn: apiGetSession,
   });
 
-  return { isAuthenticated: user?.role === "authenticated", isLoading };
+  return { isAuthenticated: user?.role === "authenticated", isLoading, user };
 }

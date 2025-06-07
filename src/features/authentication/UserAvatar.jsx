@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
+import useUser from "../authentication/useUser";
+import SpinnerMini from "../../ui/SpinnerMini";
+
 const StyledUserAvatar = styled.div`
   display: flex;
   gap: 1.2rem;
@@ -19,3 +22,25 @@ const Avatar = styled.img`
   border-radius: 50%;
   outline: 2px solid var(--color-grey-100);
 `;
+
+function UserAvatar() {
+  const { user, isLoading } = useUser();
+
+  if (isLoading) return <SpinnerMini />;
+
+  const { avatar, fullName } = user.user_metadata;
+
+  return (
+    <div>
+      <StyledUserAvatar>
+        <Avatar
+          src={avatar || "default-user.jpg"}
+          alt={`${fullName}'s avatar`}
+        />
+        <span>{fullName || "User"}</span>
+      </StyledUserAvatar>
+    </div>
+  );
+}
+
+export default UserAvatar;

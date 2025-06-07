@@ -13,7 +13,7 @@ export async function signup({ email, password, fullName }) {
   });
 
   if (error) {
-    throw new Error(`LoginError: ${error.message}`);
+    throw new Error(error.message);
   }
 
   return data;
@@ -26,7 +26,7 @@ export async function login({ email, password }) {
   });
 
   if (error) {
-    throw new Error(`LoginError: ${error.message}`);
+    throw new Error(error.message);
   }
 
   return data;
@@ -38,11 +38,14 @@ export async function apiGetSession() {
 
   if (!session.session) return null;
 
-  const { data, error } = await supabase.auth.getUser();
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
 
   if (error) throw new Error("Error fetching user.");
 
-  return data?.user;
+  return user;
 }
 
 export async function logout() {
