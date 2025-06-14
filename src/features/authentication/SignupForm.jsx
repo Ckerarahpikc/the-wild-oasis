@@ -90,6 +90,7 @@ export default function SignupForm() {
           type="reset"
           size="medium"
           disabled={isSigningUp}
+          onClick={reset}
         >
           Cancel
         </Button>

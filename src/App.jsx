@@ -23,7 +23,7 @@ const queryClient = new QueryClient({
     queries: {
       // info: this is the time it takes for the query to go from 'fresh' state --> 'stale' state which also means old, all this we can find in 'react query devtools', so again if we change the data on supabase the state becomes 'fresh' then after time (1min in our case) it will become 'stale' state, the main term is: 'when the state is `fresh` nothing will change it until it becomes `stale`, as soon as it becomes `stale` the data will change to the one from supabase (if there is one)'
       // staleTime: 60 * 1000,
-      staleTime: 0,
+      // staleTime: 0,
     },
   },
 });

@@ -23,6 +23,8 @@ const Avatar = styled.img`
   outline: 2px solid var(--color-grey-100);
 `;
 
+
+
 function UserAvatar() {
   const { user, isLoading } = useUser();
 
