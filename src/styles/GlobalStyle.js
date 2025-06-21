@@ -12,7 +12,7 @@ const GlobalStyles = createGlobalStyle`
   --color-brand-800: #3730a3;
   --color-brand-900: #312e81;
 
-  &, &.light-mode {
+  &, &.light {
     /* Grey */
     --color-grey-0: #fff;
     --color-grey-50: #f9fafb;
@@ -48,7 +48,7 @@ const GlobalStyles = createGlobalStyle`
     --shadow-lg: 0 2.4rem 3.2rem rgba(0, 0, 0, 0.12);
   }
 
-  &.dark-mode {
+  &.dark {
     --color-grey-0: #18212f;
     --color-grey-50: #111827;
     --color-grey-100: #1f2937;

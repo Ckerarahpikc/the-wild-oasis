@@ -8,7 +8,7 @@ function DarkModeToggle() {
 
   return (
     <ButtonIcon onClick={() => toggleTheme()}>
-      {theme ? <HiOutlineMoon /> : <HiOutlineSun />}
+      {theme === "light" ? <HiOutlineMoon /> : <HiOutlineSun />}
     </ButtonIcon>
   );
 }

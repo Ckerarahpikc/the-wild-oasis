@@ -1,27 +1,45 @@
-import { createContext, useContext, useEffect } from "react";
-import { useLocalStorageState } from "../hooks/useLocalStorageState";
+import {
+  createContext,
+  startTransition,
+  useContext,
+  useEffect,
+  useReducer,
+} from "react";
 
 const ThemeContext = createContext();
+function initStates() {
+  const theme = localStorage.getItem("theme") || "light";
+  return { theme };
+}
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "switch_theme":
+      return { ...state, theme: state.theme === "light" ? "dark" : "light" };
+    default:
+      console.error("You called an unexpected action.");
+      return { ...state };
+  }
+}
 
 export default function ThemeProvider({ children }) {
-  const [theme, setTheme] = useLocalStorageState(false, "theme");
+  const [state, dispatch] = useReducer(reducer, undefined, initStates);
 
   useEffect(() => {
-    if (theme) {
-      document.documentElement.classList.add("dark-mode");
-      document.documentElement.classList.remove("dark-mode");
-    } else {
-      document.documentElement.classList.remove("dark-mode");
-      document.documentElement.classList.add("dark-mode");
-    }
-  }, [theme]);
+    document.documentElement.classList.toggle("dark", state.theme === "dark");
+    document.documentElement.classList.toggle("light", state.theme === "light");
+
+    localStorage.setItem("theme", state.theme);
+  }, [state.theme]);
 
   function toggleTheme() {
-    setTheme((theme) => !theme);
+    startTransition(() => {
+      dispatch({ type: "switch_theme" });
+    });
   }
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme: state.theme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );
