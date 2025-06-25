@@ -41,7 +41,7 @@ function Filter({ filterField, options }) {
   const currentFilter = searchParams.get(filterField) || options.at(0).value;
 
   // will use an effect to check if the page already has this param or not
-  //       // note: 'replace' prevents from creating new history entry (the back button will work naturally)
+  // note: 'replace' prevents from creating new history entry (the back button will work naturally)
   useEffect(
     function () {
       if (!searchParams.has(filterField)) {
@@ -51,7 +51,7 @@ function Filter({ filterField, options }) {
         );
       }
     },
-    [searchParams, setSearchParams, filterField]
+    [searchParams, setSearchParams, filterField, options]
   );
 
   function handleActiveButton(value) {
