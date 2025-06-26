@@ -69,7 +69,7 @@ export async function getBookingsAfterDate(date) {
     .from("bookings")
     .select("created_at, totalPrice, extraPrice")
     .gte("created_at", date) // info: greater then or equal to the giving date
-    .lte("created_at", getToday({ end: true })); // info: and lower then or equal to the current day
+    .lte("created_at", getToday({ end: true })); // info: and lower then or equal to the current day (end of the day)
 
   if (error) {
     console.error(error);
@@ -86,7 +86,7 @@ export async function getStaysAfterDate(date) {
     // .select('*')
     .select("*, guests(fullName)")
     .gte("startDate", date)
-    .lte("startDate", getToday());
+    .lte("startDate", getToday()); // 0.0.0.0ms of the day
 
   if (error) {
     console.error(error);

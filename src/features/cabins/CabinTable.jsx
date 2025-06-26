@@ -6,10 +6,10 @@ import Table from "../../ui/Table";
 import { useSearchParams } from "react-router-dom";
 
 function CabinTable() {
-  const { isLoading, cabins } = useCabins();
+  const { isPending, cabins } = useCabins();
   const [searchParams] = useSearchParams();
 
-  if (isLoading) return <Spinner />;
+  if (isPending) return <Spinner />;
 
   // FILTERING
   const filterValue = searchParams.get("discount") || "all";

@@ -5,14 +5,14 @@ import { useParams } from "react-router-dom";
 function useBooking() {
   const { bookingId } = useParams();
 
-  const { isLoading, data } = useQuery({
+  const { isPending, data } = useQuery({
     queryKey: ["booking", bookingId],
     queryFn: () => getBooking(bookingId),
     // note: use query will try 'three' times to refetch the data again, but sometimes we do not want that, so we use retry: false
     retry: false
   });
 
-  return { data, isLoading };
+  return { data, isPending };
 }
 
 export default useBooking;

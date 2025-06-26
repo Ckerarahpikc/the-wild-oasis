@@ -18,17 +18,17 @@ function ProtectedAppLayout({ children }) {
   const navigate = useNavigate();
 
   // 1. we need to get the session of the current user, if there is any
-  const { isAuthenticated, isLoading } = useUser();
+  const { isAuthenticated, isPending } = useUser();
 
   // 2. if there's NO authenticated user redirect to the login page
   useEffect(() => {
-    if (!isAuthenticated && !isLoading) {
+    if (!isAuthenticated && !isPending) {
       navigate("/login");
     }
-  }, [isAuthenticated, isLoading, navigate]);
+  }, [isAuthenticated, isPending, navigate]);
 
   // 3. if loading give loading
-  if (isLoading)
+  if (isPending)
     return (
       <FullPageLoading>
         <Spinner />

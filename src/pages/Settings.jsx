@@ -6,9 +6,9 @@ import UpdateSettingsForm from "../features/settings/UpdateSettingsForm";
 import Row from "../ui/Row";
 
 function Settings() {
-  const { isLoading } = useSetting();
+  const { isPending } = useSetting();
 
-  if (isLoading) return <Spinner />;
+  if (isPending) return <Spinner />;
 
   return (
     <Row type="vertical">

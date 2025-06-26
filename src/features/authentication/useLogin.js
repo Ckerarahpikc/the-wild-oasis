@@ -7,7 +7,7 @@ function useLogin() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 
-  const { mutate: login, isLoading } = useMutation({
+  const { mutate: login, isPending } = useMutation({
     mutationFn: ({ email, password }) => loginUser({ email, password }),
 
     onSuccess: (user) => {
@@ -21,7 +21,7 @@ function useLogin() {
     },
   });
 
-  return { login, isLoading };
+  return { login, isPending };
 }
 
 export default useLogin;

@@ -10,7 +10,7 @@ function useDeleteCabin() {
 
   // info: useMutation is used to 'update/delete/create' data or perform SSE
   // note: mutate is the actual function that we need to run in order to run a function 'mutationFn'
-  const { isLoading: isDeleting, mutate: deleteCabin } = useMutation({
+  const { isPending: isDeleting, mutate: deleteCabin } = useMutation({
     mutationFn: deleteCabinApi,
     onSuccess: () => {
       toast.success("Cabin was successfully deleted.");

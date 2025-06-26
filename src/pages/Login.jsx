@@ -23,7 +23,7 @@ const LoginLayout = styled.main`
 
 function Login() {
   const navigate = useNavigate();
-  const { isAuthenticated, isLoading } = useUser();
+  const { isAuthenticated, isPending } = useUser();
 
   useEffect(
     function () {
@@ -34,7 +34,7 @@ function Login() {
     [isAuthenticated, navigate]
   );
 
-  if (isLoading)
+  if (isPending)
     return (
       <FullPageLoading>
         <Spinner />

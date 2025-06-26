@@ -11,7 +11,7 @@ import useLogin from "./useLogin";
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login, isLoading } = useLogin();
+  const { login, isPending } = useLogin();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -51,7 +51,7 @@ function LoginForm() {
       </FormRowVertical>
       <FormRowVertical>
         <Button variation="primary" size="large">
-          {!isLoading ? "Login" : <SpinnerMini />}
+          {!isPending ? "Login" : <SpinnerMini />}
         </Button>
       </FormRowVertical>
     </Form>

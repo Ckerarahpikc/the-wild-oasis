@@ -26,9 +26,9 @@ const HeadingGroup = styled.div`
 `;
 
 function BookingDetail() {
-  const { data: booking, isLoading: isBookingLoading } = useBooking();
+  const { data: booking, isPending: isBookingLoading } = useBooking();
   const { isCheckinOut, checkout } = useCheckout();
-  const { mutate: deleteBooking, isLoading: isLoadingDeleteBooking } =
+  const { mutate: deleteBooking, isPending: isLoadingDeleteBooking } =
     useDeleteBooking();
   const moveBack = useMoveBack();
   const navigate = useNavigate();

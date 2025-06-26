@@ -31,10 +31,10 @@ function CheckinBooking() {
 
   const moveBack = useMoveBack();
   const { isCheckingIn, checkIn } = useCheckin();
-  const { data: booking, isLoading: isLoadingBooking } = useBooking();
+  const { data: booking, isPending: isLoadingBooking } = useBooking();
   const {
     settings,
-    isLoading: isLoadingSettings,
+    isPending: isLoadingSettings,
     settingsError,
   } = useSetting();
 

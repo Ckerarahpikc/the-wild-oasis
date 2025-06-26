@@ -1,13 +1,11 @@
-import { useMutation, useQueries, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteBooking } from "../../services/apiBookings";
 import toast from "react-hot-toast";
-import { useParams } from "react-router-dom";
 
 function useDeleteBooking() {
-  const { bookingId } = useParams();
   const queryClient = useQueryClient();
 
-  const { mutate, isLoading } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: (id) => deleteBooking(id),
 
     onSuccess: () => {
@@ -20,7 +18,7 @@ function useDeleteBooking() {
     },
   });
 
-  return { mutate, isLoading };
+  return { mutate, isPending };
 }
 
 export default useDeleteBooking;

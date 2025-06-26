@@ -58,7 +58,7 @@ function BookingRow({
   },
 }) {
   const { isCheckingOut, checkout } = useCheckout();
-  const { mutate: deleteBooking, isLoading: isLoadingDeleteBooking } =
+  const { mutate: deleteBooking, isPending: isLoadingDeleteBooking } =
     useDeleteBooking();
 
   const statusToTagName = {
